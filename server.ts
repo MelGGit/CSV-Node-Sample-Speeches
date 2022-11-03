@@ -3,6 +3,7 @@ import parseCSV from './csvConverter'
 import { SpeechType } from './types'
 import downloadFiles from './downloadFiles'
 import combineCSV from './combineCSV'
+import deleteFiles from './deleteFiles'
 
 const port = 8000
 
@@ -18,6 +19,7 @@ app.get('/evaluation', async (req: Request, res: Response) => {
     await downloadFiles(urls)
     const combinedCSV: SpeechType[] = await combineCSV(urls.length)
     const result = await parseCSV(combinedCSV)
+    deleteFiles(urls.length)
     res.send(result)
   } catch (error) {    
     res.status(400).send({error: "No URL in params"})

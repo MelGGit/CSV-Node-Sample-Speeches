@@ -1,18 +1,15 @@
 import http from 'http'
-import fsStatic from 'fs'
-import { resolve } from 'path';
+import fs from 'fs'
 
 export default async function downloadFile(url:string, index: number) {
-  return new Promise ((resolve) => {
+  return await new Promise ((resolve) => {
     const path = `./files/file${index}.csv`;
-        let filePath = fsStatic.createWriteStream(path);
+        let filePath = fs.createWriteStream(path);
         http.get(url,(res) => {
+          res.pipe(filePath);
           res.on('end', function() {
-            console.log("Download complete");
+            resolve(true)
         });
-        res.pipe(filePath);
         })
-    return resolve(filePath)
     })
-    return true
 }

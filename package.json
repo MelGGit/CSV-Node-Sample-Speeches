@@ -1,13 +1,13 @@
 {
   "name": "political-speeches",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test Project for handling CSV fils using Node and Typescript",
   "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/server.ts",
+    "start": "concurrently \"npm run fileserver\" \"npm run dev\"",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
-    "fileserver": "concurrently \"npx tsc\" \"nodemon -q dist/fileserver.js\""
+    "fileserver": "concurrently \"npx tsc\" \"nodemon -q dist/fileserver.js\""    
   },
   "keywords": [],
   "author": "",

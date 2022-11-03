@@ -1,16 +1,10 @@
-import { parse } from 'csv-parse/sync'
 import { CSVReturnType, MostSpeechesType, SpeechType } from './types'
 
-export default async function parseCSV (fileContent: Buffer): CSVReturnType{
-  const records: SpeechType[] = parse(fileContent, {
-    columns: true,
-    trim: true,
-    cast: true,
-    cast_date: true
-})
-  const mostSpeechesInYear = getMostSpeeches(records, 2013)
-  const mostTopicSpeeches = getMostTopicSpeeches(records, 'Internal Security')
-  const leastWordy = getLeastWordy(records)
+export default async function parseCSV (fileContent: SpeechType[]): CSVReturnType{
+
+  const mostSpeechesInYear = getMostSpeeches(fileContent, 2013)
+  const mostTopicSpeeches = getMostTopicSpeeches(fileContent, 'Internal Security')
+  const leastWordy = getLeastWordy(fileContent)
   
   return {
     mostSpeeches: mostSpeechesInYear,

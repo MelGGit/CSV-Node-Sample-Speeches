@@ -1,0 +1,6 @@
+node_modules
+dist
+files
+test.csv
+test2.csv
+urlText.txt

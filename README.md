@@ -1,6 +1,6 @@
 # CSV-Node-Sample-Speeches
 
-## How to Setup and use
+## How to Setup and Use
   
 Clone the Project using
    ```
